@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Function Outputs - New Data</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background-color: #e6f7ff;
+    }
+    .output {
+      background-color: #ffffff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-left: 5px solid #007acc;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #333333;
+    }
+    pre {
+      font-size: 16px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Function Outputs (Different Data)</h1>
+
+  <div class="output" id="out1"></div>
+  <div class="output" id="out2"></div>
+  <div class="output" id="out3"></div>
+  <div class="output" id="out4"></div>
+  <div class="output" id="out5"></div>
+
+  <script>
+    // 1. Function to Filter Out Negative Numbers
+    function filterNegatives(arr) {
+      return arr.filter(num => num >= 0);
+    }
+    let result1 = filterNegatives([-12, 7.5, 0, -3.4, 14, 8.2, -9]);
+    document.getElementById("out1").innerHTML = `
+      <h2>1. Filter Out Negative Numbers</h2>
+      <pre>Input: [-12, 7.5, 0, -3.4, 14, 8.2, -9]
+Output: [${result1.join(', ')}]</pre>
+    `;
+
+    // 2. Difference with 13 Function
+    function diffWith13(num) {
+      return num > 13 ? 2 * Math.abs(num - 13) : 13 - num;
+    }
+    let result2a = diffWith13(25);
+    let result2b = diffWith13(8);
+    document.getElementById("out2").innerHTML = `
+      <h2>2. Difference With 13</h2>
+      <pre>Input: 25 → Output: ${result2a}
+Input: 8 → Output: ${result2b}</pre>
+    `;
+
+    // 3. Fibonacci Series (First 12 Terms)
+    function fibonacci(n) {
+      let fib = [0, 1];
+      for (let i = 2; i < n; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
+      }
+      return fib.slice(0, n);
+    }
+    let result3 = fibonacci(12);
+    document.getElementById("out3").innerHTML = `
+      <h2>3. Fibonacci Series (First 12 Terms)</h2>
+      <pre>${result3.join(', ')}</pre>
+    `;
+
+    // 4. Sum of Multiples of 3 and 5 under 500
+    function sumMultiples(limit) {
+      let sum = 0;
+      for (let i = 0; i < limit; i++) {
+        if (i % 3 === 0 || i % 5 === 0) {
+          sum += i;
+        }
+      }
+      return sum;
+    }
+    let result4 = sumMultiples(500);
+    document.getElementById("out4").innerHTML = `
+      <h2>4. Sum of Multiples of 3 and 5 under 500</h2>
+      <pre>${result4}</pre>
+    `;
+
+    // 5. Cube using Function Object
+    let cube = new Function("n", "return n * n * n;");
+    let result5a = cube(4);
+    let result5b = cube(6);
+    document.getElementById("out5").innerHTML = `
+      <h2>5. Cube of a Number using Function Object</h2>
+      <pre>Input: 4 → Output: ${result5a}
+Input: 6 → Output: ${result5b}</pre>
+    `;
+  </script>
+
+</body>
+</html>
